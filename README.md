@@ -2,7 +2,8 @@
 Provides a working example of adding Feature Flags to a C# DLL Extension for Arma 3
 
 The goal of this repository is simply to provide a working example of one of the many ways to include RVExtFeatureFlags directly into a C# DLL.
-It uses the minimal setup simply to demonstrate the process.
+It uses the minimal setup simply to demonstrate the process. Since C# cannot provide a global variable for Arma 3 to hook into for Feature Flags, we are basically 
+providing that access through some other language binary which is embedded directly into the C# dll. And optionally, providing a getter/setter for C# to manipulate the field. This is a working Visual Studio solution example to demonstrate one of the ways it can be done.
 
 What this is not:
   - A Feature-Complete example of a C# Extension
@@ -12,11 +13,12 @@ For this example, we assume use of Visual Studio and it's associated tools and c
 It is not required. Simply adjust the steps as needed to use your preferred environment.
 
 ## The Process
-In this sample, we use C++ to provide the necessary external field to manipulate the RVExtFeatureFlags but other languages can be useed.
+In this example, we use C++ to provide the necessary external field to manipulate the RVExtFeatureFlags but other languages can be useed.
 
 The .cpp file is located in the same directory as the C# project files but, it can be placed anywhere.
 
 See [Arma3ExtFeatureFlags.cpp](Arma3ExtFeatureFlags.cpp) for an example of such a file
+
 
 ### Step 1 - Compile the .cpp file into a .obj file
   The goal is to compile and place an .obj file into the Intermediary Folder so we can link into the final C# DLL.
