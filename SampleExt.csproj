@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework> <!-- Replace with net10.0 if desired-->
+    <Nullable>enable</Nullable>
+    <AssemblyName>SampleExt_x64</AssemblyName> <!-- Arma requires _x64 for a 64-bit dll-->
+    
+    <!-- Required -->
+    <OutputType>Library</OutputType>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PublishAot>true</PublishAot> 
+    <StripSymbols>false</StripSymbols> 
+    <NativeLib>Shared</NativeLib> 
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <NativeLibrary Include="obj\Release\net8.0\win-x64\Arma3ExtFeatureFlags.obj"  Condition="'$(TargetFramework)' == 'net8.0'"/>
+    <LinkerArg Include="obj\Release\net8.0\win-x64\Arma3ExtFeatureFlags.obj"  Condition="'$(TargetFramework)' == 'net10.0'"/>
+  </ItemGroup>
+ 
+</Project>
