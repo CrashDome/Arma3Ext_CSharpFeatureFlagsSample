@@ -31,13 +31,15 @@ See [Arma3ExtFeatureFlags.cpp](Arma3ExtFeatureFlags.cpp) for an example of such 
 
   This only has to happen once unless you need to modify the cpp file in which case recompilation is required.
   
-  ### WARNING : For this to be x64 compatible, you have to use the 64-bit cl.exe or the 'x64 Native Tools Command Prompt'
+   WARNING : For this to be x64 compatible, you have to use the 64-bit cl.exe or the 'x64 Native Tools Command Prompt'
   If the compilation results in an x86 .obj file as the normal Command Prompt would typically result in, the final compilation will fail. 
 
 ### Step 2 - Opional : Make sure you use LibraryImportAttribute (or DLLImport) in your .cs file for the getter/setter we added in the .cpp file
   LibraryImport is technically slightly faster and newer but, DLLImport is still supported and works
   - For LibraryImport - use partial classes and methods for the source generator to work.
   - For DLLImport - just use extern as normal
+
+   WARNING: The DLLImport or LibraryImportAttribute *MUST* reference your final DLL filename. If "__Internal" is used, it will crash Arma. The reason is because __Internal references the Arma assembly instead of the DLL itself once Arma has loaded the extension into memory. 
     
   See [Main.cs](Main.cs) for an example.
 
