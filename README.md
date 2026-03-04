@@ -19,7 +19,7 @@ The .cpp file is located in the same directory as the C# project files but, it c
 See [Arma3ExtFeatureFlags.cpp](Arma3ExtFeatureFlags.cpp) for an example of such a file
 
 ### Step 1 - Compile the .cpp file into a .obj file
-  The goal is to compile and place .obj file into the Intermediary Folder for linking into the final C# DLL.
+  The goal is to compile and place an .obj file into the Intermediary Folder so we can link into the final C# DLL.
 
   The intermediary directory is typically 'obj\ (build) \ (target) \ (runtime)' or in this case *'obj\Release\net8.0\win-x64'*
 
@@ -34,13 +34,13 @@ See [Arma3ExtFeatureFlags.cpp](Arma3ExtFeatureFlags.cpp) for an example of such 
   LibraryImport is technically slightly faster and newer but, DLLImport is still supported and works
   - For LibraryImport - use partial classes and methods for the source generator to work.
   - For DLLImport - just use extern as normal
-  - 
+    
   See [Main.cs](Main.cs) for an example.
 
 ### Step 3 - Make sure your .csproj file includes an ItemGroup item to include the .obj file 
   - For net8.0 - NativeLibrary can be used
   - For net10.0 - LinkerArgs *must* be used
-  - 
+    
   See [SampleExt.csproj](SampleExt.csproj) for an example
 
 ### Step 4 - Compile the C# library
