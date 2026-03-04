@@ -24,8 +24,10 @@ See [Arma3ExtFeatureFlags.cpp](Arma3ExtFeatureFlags.cpp) for an example of such 
   The goal is to compile and place an .obj file into the Intermediary Folder so we can link into the final C# DLL.
 
   The intermediary directory is typically 'obj\ (build) \ (target) \ (runtime)' or in this case *'obj\Release\net8.0\win-x64'*
+  
 
-  ```l /c /EHsc Arma3ExtFeatureFlags.cpp /Fo:obj\Release\net8.0\win-x64\Arma3ExtFeatureFlags.obj```
+  e.g. ```cl /c /EHsc Arma3ExtFeatureFlags.cpp /Fo:obj\Release\net8.0\win-x64\Arma3ExtFeatureFlags.obj```
+  
 
   This only has to happen once unless you need to modify the cpp file in which case recompilation is required.
   
@@ -46,9 +48,11 @@ See [Arma3ExtFeatureFlags.cpp](Arma3ExtFeatureFlags.cpp) for an example of such 
   See [SampleExt.csproj](SampleExt.csproj) for an example
 
 ### Step 4 - Compile the C# library
+
   e.g. ```dotnet publish -c Release -r win-x64```
 
 ### Step 5 - Verify all symbols are in the DLL using dumpbin or something equivalent
+
   e.g. ```dumpbin /exports SampleExt_x64.dll```
   
   should result in something like this:
