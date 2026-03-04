@@ -34,7 +34,7 @@ See [Arma3ExtFeatureFlags.cpp](Arma3ExtFeatureFlags.cpp) for an example of such 
   ### WARNING : For this to be x64 compatible, you have to use the 64-bit cl.exe or the 'x64 Native Tools Command Prompt'
   If the compilation results in an x86 .obj file as the normal Command Prompt would typically result in, the final compilation will fail. 
 
-### Step 2 - Make sure you use LibraryImportAttribute (or DLLImport) in your .cs file
+### Step 2 - Opional : Make sure you use LibraryImportAttribute (or DLLImport) in your .cs file for the getter/setter we added in the .cpp file
   LibraryImport is technically slightly faster and newer but, DLLImport is still supported and works
   - For LibraryImport - use partial classes and methods for the source generator to work.
   - For DLLImport - just use extern as normal
